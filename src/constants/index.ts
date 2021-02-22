@@ -1,3 +1,2 @@
-export * from './QuotesActionTypes';
-export * from './Phase'
-export * from './ReduxAction'
+export * from './phase'
+export * from './reduxAction'

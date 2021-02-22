@@ -1,27 +1,15 @@
 import React, { Fragment } from 'react';
-import axios from 'axios';
-
+import { connect } from 'react-redux';
+import { fetchQuotes } from '../actions/BreakingBadQuotesActions';
 class BreakingBadQuotesList extends React.Component<any, any> {
-  constructor(props : any) {
-    super(props);
-    this.state  = {
-      quotes : []
-    }
-  }
   componentDidMount(){
-    axios.get(`https://breaking-bad-quotes.herokuapp.com/v1/quotes/10`)
-    .then((res : any) => {
-      const quotes = res.data;
-      this.setState({ quotes : quotes });
-    })
+    this.props.fetchQuotesData('https://breaking-bad-quotes.herokuapp.com/v1/quotes/10');
   }
-
   render() {
-    const { quotes } = this.state;
-console.log('quotes', quotes);
+    const { quotes } = this.props;
     return (
       <ul>
-        { quotes.length !== 0 && quotes.map((quote : any) => {
+        {quotes &&  quotes.length !== 0 && quotes.map((quote : any) => {
           return (
             <Fragment key={quote?.quote}>
               {
@@ -37,10 +25,12 @@ console.log('quotes', quotes);
   }
 }
 
-// const mapStateToProps = state => ({
-//   quotes: state.quotes,
-// })
-
-// export default connect(mapStateToProps, {
-// })(BreakingBadQuotesList)
-export default BreakingBadQuotesList;
+const mapStateToProps = (state : any) => ({
+  quotes: state.quotes,
+})
+const mapDispatchToProps = (dispatch : any) => {
+  return {
+    fetchQuotesData: (url : string) => dispatch(fetchQuotes(url))
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(BreakingBadQuotesList)

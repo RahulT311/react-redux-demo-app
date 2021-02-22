@@ -1,6 +1,6 @@
-import * as QuotesState from "../constants"
-import { Phase } from "../constants/Phase"
-import { ReduxAction } from "../constants/ReduxAction"
+import * as QuotesState from "../actions/actionTypes"
+import { Phase } from "../constants/phase"
+import { ReduxAction } from "../constants/reduxAction"
  export interface Quotes {
   phase : Phase
   quotes: Quote[]
@@ -10,7 +10,7 @@ export interface Quote {
   quote : string,
   author : string,
 }
-const initialState : Quotes = {
+export const initialState : Quotes = {
   phase : Phase.INIT,
   quotes: [],
   errorMessage: ''
@@ -21,7 +21,7 @@ export default function(state = initialState, action : ReduxAction) {
   switch (action.type) {
     case QuotesState.SET_QUOTES:
       return {
-        quotes: [action.payload, ...state.quotes],
+        quotes: action.payload,
       }
     
     case QuotesState.FETCHING_QUOTES:
