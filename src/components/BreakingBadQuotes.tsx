@@ -1,82 +1,62 @@
 import React, { Fragment } from "react"
 import { connect } from "react-redux"
-import {
-  addSong,
-  removeSong,
-  editSong,
-  updateSong,
-  cancelEdit,
-} from "../actions/songActions"
 interface Props {
     
 }
-class SongList extends React.Component {
+class BreakingBadQuotesList extends React.Component {
   constructor(props : Props) {
     super(props)
     this.state = {
-      newSong: "",
+      newQuote: "",
       currentVal: "",
     }
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
     this.remove = this.remove.bind(this)
-    this.edit = this.edit.bind(this)
     this.update = this.update.bind(this)
-    this.cancel = this.cancel.bind(this)
-    this.updatedVal = this.updatedVal.bind(this)
   }
 
   onSubmit(e) {
     e.preventDefault()
 
-    const addedSong = {
-      title: this.state.newSong,
+    const addedQuote = {
+      title: this.state.newQuote,
     }
 
-    this.props.addSong(addedSong)
-    this.setState({ newSong: "" })
+    this.props.addQuote(addedQuote)
+    this.setState({ newQuote: "" })
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  updatedVal(e) {
-    this.setState({ [e.target.name]: e.target.value })
-  }
 
   remove(i) {
-    this.props.removeSong(i)
+    this.props.removeQuote(i);
   }
 
-  edit(i, title) {
-    this.props.editSong(i)
-    this.setState({ currentVal: title })
-  }
 
   update(i) {
     this.props.updateSong(this.state.currentVal, i)
     this.setState({ currentVal: "" })
   }
 
-  cancel(i) {
-    this.props.cancelEdit(i)
-  }
 
   render() {
-    const { songs } = this.props.songs
+    const { songs } = this.props.quotes
     return (
       <ul>
-        {songs.map((song, i) => {
+        {songs.map((quote, i) => {
           return (
-            <Fragment key={song.title}>
-              {!song.editing ? (
+            <Fragment key={quote.title}>
+              {!quote.editing ? (
                 <li>
-                  {song.title}
+                  {quote.title}
                   <span>
                     <button onClick={() => this.remove(i)}>Delete</button>
-                    <button onClick={() => this.edit(i, song.title)}>
+                    <button onClick={() => this.edit(i, quote.title)}>
                       Edit
                     </button>
                   </span>
@@ -92,7 +72,6 @@ class SongList extends React.Component {
                     />
                   </form>
                   <span>
-                    <button onClick={() => this.cancel(i)}>Cancel</button>
                     <button onClick={() => this.update(i)}>Update</button>
                   </span>
                 </li>
@@ -101,8 +80,8 @@ class SongList extends React.Component {
           )
         })}
         <form onSubmit={this.onSubmit}>
-          <input type="text" name="newSong" onChange={this.onChange} />
-          <input type="submit" value="Add Song" />
+          <input type="text" name="newQuote" onChange={this.onChange} />
+          <input type="submit" value="Add Quote" />
         </form>
       </ul>
     )
@@ -110,13 +89,11 @@ class SongList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  songs: state.songs,
+  quotes: state.quotes,
 })
 
 export default connect(mapStateToProps, {
-  addSong,
-  removeSong,
-  editSong,
-  updateSong,
-  cancelEdit,
-})(SongList)
+  addQuote,
+  deleteQuote,
+  updateQuote, 
+})(BreakingBadQuotesList)

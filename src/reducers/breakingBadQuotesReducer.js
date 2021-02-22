@@ -15,18 +15,18 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_QUOTE:
       return {
-        songs: [action.payload, ...state.songs],
+        quotes: [action.payload, ...state.quotes],
       }
     case DELETE_QUOTE:
       return {
-        songs: state.songs.filter((s, i) => i !== action.payload),
+        quotes: state.quotes.filter((s, i) => i !== action.payload),
       }   
     case UPDATE_QUOTE:
       return {
-        songs: state.songs.map((song, i) =>
+        quotes: state.quotes.map((quote, i) =>
           i === action.index
-            ? { ...song, title: action.title, editing: false }
-            : song
+            ? { ...quote, title: action.title, editing: false }
+            : quote
         ),
       }    
     default:
