@@ -3,6 +3,7 @@ import {
   SET_QUOTES,
   DELETE_QUOTE,
   UPDATE_QUOTE,
+  FETCHING_QUOTES,
   } from '../constants'
   
   export const addQuote = (quote: any) => {
@@ -26,16 +27,16 @@ import {
       index,
     }
   }
-  export const myAction = (url : any) => {
-    return dispatch => {
+  export const fetchQuotes = (url : any) => {
+    return (dispatch : any) => {
       dispatch({
-        type: FETCHING_DATA,
+        type: FETCHING_QUOTES,
         fetching: true
       })
-      getSomeAsyncData(dispatch, url)
+      fetchAsyncData(dispatch, url)
     }
   }
-  async function getSomeAsyncData(dispatch : any, url : string) {
+  async function fetchAsyncData(dispatch : any, url : string) {
     try {
       const data = await axios.get(url).then(res => res.data)
       dispatch({

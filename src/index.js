@@ -5,11 +5,12 @@ import reportWebVitals from './reportWebVitals';
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import BreakingBadQuotesList from './components/BreakingBadQuotes';
 const routing = (
   <Router>
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/login" component={Login} />
+      <Route path="/login" component={BreakingBadQuotesList} />
       <Route path="/signup" component={SignUp} />
     </div>
   </Router>

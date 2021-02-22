@@ -10,7 +10,7 @@ class Login extends React.Component<{}, State> {
 
 componentDidMount() {
   axios.get(`https://jsonplaceholder.typicode.com/users`)
-    .then(res => {
+    .then(res => {      
       const persons = res.data;
       this.setState({ persons });
     })

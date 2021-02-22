@@ -23,7 +23,7 @@ class App extends React.Component {
         <Route render={({ history}) => (
     <Button variant="primary"
       type='button'
-      onClick={() => { history.push('login') }}
+      onClick={() => { history.push('/login') }}
     >
       Login
       </Button>
