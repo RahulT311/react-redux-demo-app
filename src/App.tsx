@@ -2,8 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import Food from './category/Food';
-import Animal from './category/Animal';
+import { Route } from 'react-router-dom'
 
 import './App.css';
 class App extends React.Component {
@@ -20,11 +19,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <ul>
-        <Food></Food>
-        <Animal></Animal>
-        <Button variant="primary">Primary</Button>{' '}        
-        <Button variant="primary">Primary</Button>{' '}
+      <ul>                         
+        <Route render={({ history}) => (
+    <Button variant="primary"
+      type='button'
+      onClick={() => { history.push('login') }}
+    >
+      Login
+      </Button>
+  )} />
+  <Route render={({ history}) => (
+    <Button variant="primary"
+      type='button'
+      onClick={() => { history.push('/signup') }}
+    >
+      Sign Up
+      </Button>
+  )} />
       </ul>
     )
   }
