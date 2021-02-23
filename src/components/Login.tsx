@@ -1,13 +1,5 @@
 import  React from 'react';
-import axios from 'axios';
-interface State {
-    persons: any[];
-  }
-class Login extends React.Component<{}, State> {
-  state = {
-  persons: []
-}
-
+class Login extends React.Component {
 
 render() {
   return (

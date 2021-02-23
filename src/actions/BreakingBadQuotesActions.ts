@@ -29,7 +29,7 @@ import * as ActionTypes from './actionTypes';
                     dispatch(addQuote(response.data));
         })
         .catch(error => {
-          //error;
+          new Error('Error Occured');
         })
     }
 }

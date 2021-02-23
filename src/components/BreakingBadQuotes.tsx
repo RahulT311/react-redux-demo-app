@@ -5,6 +5,7 @@ class BreakingBadQuotesList extends React.Component<any, any> {
   componentDidMount(){
     this.props.fetchQuotesData('https://breaking-bad-quotes.herokuapp.com/v1/quotes/10');
   }
+ 
   render() {
     const { quotes } = this.props;
     return (
