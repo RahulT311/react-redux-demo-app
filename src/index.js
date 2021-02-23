@@ -14,7 +14,7 @@ const routing = (
   <Router>
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/login" component={BreakingBadQuotesList} />
+      <Route path="/quotes" component={BreakingBadQuotesList} />
       <Route path="/signup" component={SignUp} />
     </div>
   </Router>

@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchQuotes } from '../actions/BreakingBadQuotesActions';
+import * as ApiEndPoints from '../constants/apiEndPoints'
 class BreakingBadQuotesList extends React.Component<any, any> {
   componentDidMount(){
-    this.props.fetchQuotesData('https://breaking-bad-quotes.herokuapp.com/v1/quotes/10');
+    this.props.fetchQuotesData(ApiEndPoints.breakingBadQuotesURL);
   }
  
   render() {

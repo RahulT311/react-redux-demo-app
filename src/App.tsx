@@ -8,13 +8,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <ul>                         
+      <ul style={{width: "100px"}}>                         
         <Route render={({ history}) => (
     <Button variant="primary"
       type='button'
-      onClick={() => { history.push('/login') }}
+      onClick={() => { history.push('/quotes') }}
     >
-      Login
+      Quotes
       </Button>
   )} />
   <Route render={({ history}) => (
