@@ -20,9 +20,9 @@ class App extends React.Component {
   <Route render={({ history}) => (
     <Button variant="primary"
       type='button'
-      onClick={() => { history.push('/signup') }}
+      onClick={() => { history.push('/dogs') }}
     >
-      Sign Up
+      Dogs
       </Button>
   )} />
       </ul>
